@@ -1,99 +1,80 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Foppa Flyttar</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg1:#0f172a;
-      --bg2:#2b1a4a;
-      --accent1:#ff6b6b;
-      --accent2:#ffd166;
-      --glass: rgba(255,255,255,0.06);
-    }
-
-    html,body{
-      height:100%;
-      margin:0;
-      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 60%);
-      color: white;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
-
-    .center {
-      height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:2rem;
-    }
-
-    .logo {
-      display:inline-block;
-      text-align:center;
-      padding: 28px 46px;
-      border-radius: 18px;
-      backdrop-filter: blur(6px);
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-      box-shadow:
-        0 10px 30px rgba(11,13,27,0.6),
-        0 2px 6px rgba(0,0,0,0.5),
-        0 0 40px rgba(255,107,107,0.08);
-      transform: translateZ(0);
-    }
-
-    .logo h1{
-      margin:0;
-      font-size:clamp(36px, 8vw, 96px);
-      letter-spacing:0.02em;
-      line-height:1;
-      font-weight:800;
-      background: linear-gradient(90deg, var(--accent1), #a86bff 40%, var(--accent2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-transform: none;
-      text-shadow: 0 6px 30px rgba(42,14,63,0.45);
-      display:inline-block;
-      padding:6px 12px;
-      border-radius:10px;
-      transition: transform .2s ease;
-      animation: blink 1.1s infinite;
-      will-change: opacity, transform;
-    }
-
-    .logo h1:active { transform: scale(.99); }
-
-    @keyframes blink {
-      0%   { opacity: 1; transform: translateY(0) scale(1); filter: drop-shadow(0 12px 30px rgba(168,107,255,0.08)); }
-      45%  { opacity: 0.08; transform: translateY(-2px) scale(0.995); filter: drop-shadow(0 6px 14px rgba(168,107,255,0.02)); }
-      55%  { opacity: 0.08; transform: translateY(-2px) scale(0.995); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .logo h1 { animation: none; }
-    }
-
-    .sub {
-      margin-top:10px;
-      font-weight:600;
-      font-size:clamp(12px, 1.6vw, 18px);
-      opacity:0.85;
-      color: rgba(255,255,255,0.9);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="center">
-    <div class="logo" role="img" aria-label="Foppa Flyttar logo">
-      <h1>Foppa Flyttar</h1>
-      <div class="sub">Flyttfirmor med stil</div>
+    <div class="timeline-container">
+        <div class="timeline-line"></div>
+        
+         Timeline Item - Left 
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <div class="timeline-marker"></div>
+                <h2 class="timeline-title">First Milestone</h2>
+                <p class="timeline-subtitle">January 2024</p>
+                <p class="timeline-description">
+                    This is where you describe your first milestone. Add as much detail as you need to tell your story.
+                </p>
+                <img src="/placeholder.svg?height=300&width=400" alt="Milestone 1" class="timeline-image">
+            </div>
+        </div>
+
+         Timeline Item - Right 
+        <div class="timeline-item right">
+            <div class="timeline-content">
+                <div class="timeline-marker"></div>
+                <h2 class="timeline-title">Second Achievement</h2>
+                <p class="timeline-subtitle">March 2024</p>
+                <p class="timeline-description">
+                    Your second milestone description goes here. The timeline automatically alternates between left and right.
+                </p>
+                <img src="/placeholder.svg?height=300&width=400" alt="Milestone 2" class="timeline-image">
+            </div>
+        </div>
+
+         Timeline Item - Left 
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <div class="timeline-marker"></div>
+                <h2 class="timeline-title">Major Update</h2>
+                <p class="timeline-subtitle">June 2024</p>
+                <p class="timeline-description">
+                    Continue building your timeline by copying the timeline-item structure. Simply alternate between "left" and "right" classes.
+                </p>
+                <img src="/placeholder.svg?height=300&width=400" alt="Milestone 3" class="timeline-image">
+            </div>
+        </div>
+
+         Timeline Item - Right 
+        <div class="timeline-item right">
+            <div class="timeline-content">
+                <div class="timeline-marker"></div>
+                <h2 class="timeline-title">New Chapter</h2>
+                <p class="timeline-subtitle">September 2024</p>
+                <p class="timeline-description">
+                    Each item can have different amounts of content. The layout will adjust automatically to accommodate your text and images.
+                </p>
+                <img src="/placeholder.svg?height=300&width=400" alt="Milestone 4" class="timeline-image">
+            </div>
+        </div>
+
+         Timeline Item - Left 
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <div class="timeline-marker"></div>
+                <h2 class="timeline-title">Current Status</h2>
+                <p class="timeline-subtitle">December 2024</p>
+                <p class="timeline-description">
+                    This is your most recent milestone. Keep adding more timeline items as your journey continues!
+                </p>
+                <img src="/placeholder.svg?height=300&width=400" alt="Milestone 5" class="timeline-image">
+            </div>
+        </div>
+
     </div>
-  </div>
 </body>
 </html>
