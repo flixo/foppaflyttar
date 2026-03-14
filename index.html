@@ -7,26 +7,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="forecast-container">
+        <div class="timeline-content forecast-content">
+            <h2 class="timeline-title">Next moving timeframe</h2>
+            <!-- Estimate is based on known move dates with month+year: Oct 2018, Sep 2020, Dec 2021, Nov 2022, Oct 2024, Sep 2025, Oct 2025. Consecutive intervals are 23, 15, 11, 23, 11, and 1 months (avg 14 months). Latest move was Oct 2025, so +14 months => Dec 2026. -->
+            <p class="timeline-description">
+                Estimated next move: December 2026
+            </p>
+        </div>
+    </div>
+
     <div class="timeline-container">
         <div class="timeline-line"></div>
+
+        <div class="timeline-date-wrapper">
+            <div class="timeline-date">Today</div>
+        </div>
 
         <div class="timeline-item left">
             <div class="timeline-content-wrapper">
             <div class="timeline-content">
                 <div class="timeline-marker"></div>
-                <h2 class="timeline-title">Next moving timeframe</h2>
-                <!-- Estimate is based on known move dates with month+year: Oct 2018, Sep 2020, Dec 2021, Nov 2022, Oct 2024, Sep 2025, Oct 2025. Consecutive intervals are 23, 15, 11, 23, 11, and 1 months (avg 14 months). Latest move was Oct 2025, so +14 months => Dec 2026. -->
+                <h2 class="timeline-title">Östra järnvägsgatan 13</h2>
+                <p class="timeline-subtitle">Moheda - May 2026</p>
                 <p class="timeline-description">
-                    Estimated next move: December 2026
+                    Upcoming move planned for 1 May.
                 </p>
+                <img src="images/moves/ostra-jarnvagsgatan-13.jpg" alt="House at Östra järnvägsgatan 13, Moheda" class="timeline-image">
             </div>
             </div>
         </div>
 
         <div class="timeline-date-wrapper">
-            <div class="timeline-date">Today</div>
+            <div class="timeline-date">2025</div>
         </div>
-        
+
         <div class="timeline-item right">
             <div class="timeline-content-wrapper">
             <div class="timeline-content">
@@ -34,19 +49,14 @@
                 <h2 class="timeline-title">Wieselgrensgatan</h2>
                 <p class="timeline-subtitle">Växjö - Oktober 2025</p>
                 <p class="timeline-description">
-                    <!-- Add move description here -->
+                    Stayed here 5 months so far.
                 </p>
                 <img src="images/moves/wieselgrensgatan.jpg" alt="House at Wieselgrensgatan, Växjö" class="timeline-image">
             </div>
             </div>
         </div>
-
-
-        <div class="timeline-date-wrapper">
-            <div class="timeline-date">2025</div>
-        </div>
-        
-        
+         
+         
         <div class="timeline-item left">
             <div class="timeline-content-wrapper">
             <div class="timeline-content">
@@ -54,7 +64,7 @@
                 <h2 class="timeline-title">Långa gatan</h2>
                 <p class="timeline-subtitle">Växjö - September 2025</p>
                 <p class="timeline-description">
-                    <!-- Add move description here -->
+                    Stayed here 1 month.
                 </p>
                 <img src="images/moves/langa-gatan.jpg" alt="House at Långa gatan, Växjö" class="timeline-image">
             </div>
@@ -72,7 +82,7 @@
                 <h2 class="timeline-title">Falkgatan</h2>
                 <p class="timeline-subtitle">Växjö - Oktober 2024</p>
                 <p class="timeline-description">
-                    <!-- Add move description here -->
+                    Stayed here 11 months.
                 </p>
                 <img src="images/moves/falkgatan.jpg" alt="House at Falkgatan, Växjö" class="timeline-image">
             </div>
@@ -90,7 +100,7 @@
                 <h2 class="timeline-title">Östra järnvägsgatan 13</h2>
                 <p class="timeline-subtitle">Moheda - November 2022</p>
                 <p class="timeline-description">
-                    <!-- Add move description here -->
+                    Stayed here 23 months.
                 </p>
                 <img src="images/moves/ostra-jarnvagsgatan-13.jpg" alt="House at Östra järnvägsgatan 13, Moheda" class="timeline-image">
             </div>
@@ -108,7 +118,7 @@
                 <h2 class="timeline-title">Ör 1</h2>
                 <p class="timeline-subtitle">Ör - December 2021</p>
                 <p class="timeline-description">
-                    <!-- Add move description here -->
+                    Stayed here 11 months.
                 </p>
                 <img src="images/moves/or-1.jpg" alt="House at Ör 1, Ör" class="timeline-image">
             </div>
@@ -126,7 +136,7 @@
                 <h2 class="timeline-title">Östra järnvägsgatan 17</h2>
                 <p class="timeline-subtitle">Moheda - September 2020</p>
                 <p class="timeline-description">
-                    <!-- Add move description here -->
+                    Stayed here 15 months.
                 </p>
                 <img src="images/moves/ostra-jarnvagsgatan-17.jpg" alt="House at Östra järnvägsgatan 17, Moheda" class="timeline-image">
             </div>
@@ -144,7 +154,7 @@
                 <h2 class="timeline-title">Humlevägen</h2>
                 <p class="timeline-subtitle">Torpsbruk - OKTOBER 2018</p>
                 <p class="timeline-description">
-                    <!-- Add move description here -->
+                    Stayed here 23 months.
                 </p>
                 <img src="images/moves/humlevagen.jpg" alt="House at Humlevägen, Torpsbruk" class="timeline-image">
             </div>
@@ -162,7 +172,7 @@
                 <h2 class="timeline-title">Härlöv 2</h2>
                 <p class="timeline-subtitle">Härlöv - ? 2017</p>
                 <p class="timeline-description">
-                    <!-- Add move description here -->
+                    Stayed here ~1 year.
                 </p>
                 <img src="images/moves/harlov-2.jpg" alt="House at Härlöv 2, Härlöv" class="timeline-image">
             </div>
@@ -180,7 +190,7 @@
                 <h2 class="timeline-title">Östra Järnvägsgatan 15</h2>
                 <p class="timeline-subtitle">Torpsbruk - ? 2016</p>
                 <p class="timeline-description">
-                    <!-- Add move description here -->
+                    Stayed here ~1 year.
                 </p>
                 <img src="images/moves/ostra-jarnvagsgatan-15.jpg" alt="House at Östra Järnvägsgatan 15, Torpsbruk" class="timeline-image">
             </div>
@@ -198,7 +208,7 @@
                 <h2 class="timeline-title">Kungsvägen 61</h2>
                 <p class="timeline-subtitle">Växjö - ? 2015</p>
                 <p class="timeline-description">
-                    <!-- Add move description here -->
+                    Stayed here ~1 year.
                 </p>
                 <img src="images/moves/kungsvagen-61.jpg" alt="House at Kungsvägen 61, Växjö" class="timeline-image">
             </div>
@@ -216,7 +226,7 @@
                 <h2 class="timeline-title">Östra Järnvägsgatan 15</h2>
                 <p class="timeline-subtitle">Torpsbruk - ? 2014</p>
                 <p class="timeline-description">
-                    <!-- Add move description here -->
+                    Stayed here ~1 year.
                 </p>
                 <img src="images/moves/ostra-jarnvagsgatan-15.jpg" alt="House at Östra Järnvägsgatan 15, Torpsbruk" class="timeline-image">
             </div>
