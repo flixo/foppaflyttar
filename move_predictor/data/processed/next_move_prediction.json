@@ -1,0 +1,7 @@
+{
+  "predicted_move_date": "2026-12",
+  "predicted_move_label_sv": "december 2026",
+  "predicted_latitude": 56.867993254013086,
+  "predicted_longitude": 14.823492950859844,
+  "prediction_method": "average_move_gap_and_coordinate_regression"
+}

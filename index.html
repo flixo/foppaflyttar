@@ -21,17 +21,18 @@
     <div class="timeline-container">
         <div class="timeline-line"></div>
 
-        <div class="timeline-item left">
-            <div class="timeline-content-wrapper">
+    <div class="timeline-item left">
+        <div class="timeline-content-wrapper">
             <div class="timeline-content">
                 <div class="timeline-marker"></div>
                 <h2 class="timeline-title">Nästa flyttperiod</h2>
-                <!-- Estimate is based on known move dates with month+year: Oct 2018, Sep 2020, Dec 2021, Nov 2022, Oct 2024, Sep 2025, Oct 2025. Consecutive intervals are 23, 15, 11, 23, 11, and 1 months (avg 14 months). Latest move was Oct 2025, so +14 months => Dec 2026. -->
-                <p class="timeline-description">
+                <p id="next-move-text" class="timeline-description">
                     Beräknad nästa flytt: december 2026
                 </p>
-            </div>
-            </div>
+
+                <div id="predicted-move-map" class="predicted-move-map"></div>
+        </div>
+    </div>
         </div>
 
         <div class="timeline-date-wrapper">
@@ -366,5 +367,52 @@
             padding: [40, 40]
         });
     </script>
+
+    <script>
+fetch("/move_predictor/data/processed/next_move_prediction.json")
+    .then(response => response.json())
+    .then(prediction => {
+        const predictedLat = prediction.predicted_latitude;
+        const predictedLon = prediction.predicted_longitude;
+
+        const textEl = document.getElementById("next-move-text");
+        if (textEl) {
+            textEl.textContent = "Beräknad nästa flytt: " + prediction.predicted_move_label_sv;
+        }
+
+        const predictedMap = L.map("predicted-move-map", {
+            scrollWheelZoom: false,
+            dragging: false,
+            touchZoom: false,
+            doubleClickZoom: false,
+            boxZoom: false,
+            keyboard: false,
+            zoomControl: false,
+            attributionControl: false
+        });
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19
+        }).addTo(predictedMap);
+
+        L.marker([predictedLat, predictedLon])
+            .addTo(predictedMap)
+            .bindPopup(
+                "<strong>Beräknad nästa flytt</strong><br>" +
+                prediction.predicted_move_label_sv
+            );
+
+        predictedMap.setView([predictedLat, predictedLon], 13);
+
+        setTimeout(() => {
+            predictedMap.invalidateSize();
+            predictedMap.setView([predictedLat, predictedLon], 13);
+        }, 500);
+    })
+    .catch(error => {
+        console.error("Could not load prediction file:", error);
+    });
+</script>
+
 </body>
 </html>
