@@ -12,6 +12,19 @@ body {
     padding: 60px 20px;
 }
 
+.forecast-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 40px 0;
+}
+
+.forecast-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .timeline-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -144,6 +157,14 @@ body {
 
 /* Responsive design */
 @media (max-width: 768px) {
+    .forecast-container {
+        margin-bottom: 28px;
+    }
+
+    .forecast-content {
+        width: 100%;
+    }
+
     .timeline-line {
         left: 30px;
     }
