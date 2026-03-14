@@ -333,8 +333,8 @@
 
         const lineCoordinates = moveEvents.map((event) => [event.lat, event.lon]);
 
-        const startColor = [46, 204, 113];
-        const endColor = [52, 152, 219];
+        const startColor = [52, 152, 219];
+        const endColor = [46, 204, 113];
         const segmentCount = lineCoordinates.length - 1;
 
         const interpolateColor = (start, end, progress) => {
