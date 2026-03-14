@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tidslinje</title>
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    >
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <section class="map-section" aria-label="Karta över flyttar">
+        <h1 class="map-title">Karta över flyttar</h1>
+        <div id="moves-map" class="moves-map"></div>
+    </section>
+
     <div class="timeline-container">
         <div class="timeline-line"></div>
 
@@ -34,7 +45,7 @@
                 <h2 class="timeline-title">Wieselgrensgatan</h2>
                 <p class="timeline-subtitle">Växjö - Oktober 2025</p>
                 <p class="timeline-description">
-                    <!-- Exact address: Wieselgrensgatan 20, Växjö -->
+                    <!-- Exact address: Wieselgrensgatan 20, Växjö (56.880207, 14.7913378) -->
                     Bostadstyp: Villa<br>
                     Områdets byggperiod: 1930- och 1940-tal<br>
                     Boarea: 172 m²<br>
@@ -58,7 +69,7 @@
                 <h2 class="timeline-title">Långa gatan</h2>
                 <p class="timeline-subtitle">Växjö - september 2025</p>
                 <p class="timeline-description">
-                    <!-- Exact address: Långa gatan 2, Växjö -->
+                    <!-- Exact address: Långa gatan 2, Växjö (56.8648229, 14.7973714) -->
                     Bostadstyp: Flerbostadshus<br>
                     Områdets byggperiod: 2000-tal<br>
                     Boarea: Ej tillgängligt<br>
@@ -80,7 +91,7 @@
                 <h2 class="timeline-title">Falkgatan</h2>
                 <p class="timeline-subtitle">Växjö - Oktober 2024</p>
                 <p class="timeline-description">
-                    <!-- Exact address: Falkgatan 8, Växjö -->
+                    <!-- Exact address: Falkgatan 8, Växjö (56.8837641, 14.7946495) -->
                     Bostadstyp: Villa (byggd 1946)<br>
                     Områdets byggperiod: 1930- och 1940-tal<br>
                     Boarea: 225 m²<br>
@@ -102,7 +113,7 @@
                 <h2 class="timeline-title">Östra järnvägsgatan 13</h2>
                 <p class="timeline-subtitle">Moheda - november 2022</p>
                 <p class="timeline-description">
-                    <!-- Exact address: Östra järnvägsgatan 13, Moheda -->
+                    <!-- Exact address: Östra järnvägsgatan 13, Moheda (57.005817, 14.5773502) -->
                     Bostadstyp: Villa (byggd 1910)<br>
                     Områdets byggperiod: 1960- och 1970-tal<br>
                     Boarea: 83 m²<br>
@@ -124,7 +135,7 @@
                 <h2 class="timeline-title">Ör 1</h2>
                 <p class="timeline-subtitle">Ör - december 2021</p>
                 <p class="timeline-description">
-                    <!-- Exact address: Ör 1, Ör -->
+                    <!-- Exact address: Ör 1, Ör (56.989973, 14.6615856) -->
                     Bostadstyp: Villa<br>
                     Områdets byggperiod: 1950- och 1960-tal<br>
                     Boarea: 87 m²<br>
@@ -146,7 +157,7 @@
                 <h2 class="timeline-title">Östra järnvägsgatan 17</h2>
                 <p class="timeline-subtitle">Moheda - september 2020</p>
                 <p class="timeline-description">
-                    <!-- Exact address: Östra järnvägsgatan 17, Moheda -->
+                    <!-- Exact address: Östra järnvägsgatan 17, Moheda (57.0068318, 14.5772772) -->
                     Bostadstyp: Villa (byggd 1947)<br>
                     Områdets byggperiod: 1950- och 1960-tal<br>
                     Boarea: 120 m²<br>
@@ -168,7 +179,7 @@
                 <h2 class="timeline-title">Humlevägen</h2>
                 <p class="timeline-subtitle">Torpsbruk - OKTOBER 2018</p>
                 <p class="timeline-description">
-                    <!-- Exact address: Humlevägen 28, Torpsbruk -->
+                    <!-- Exact address: Humlevägen 28, Torpsbruk (57.0285612, 14.569238) -->
                     Bostadstyp: Villa (byggd 1981)<br>
                     Områdets byggperiod: 1970- och 1980-tal<br>
                     Boarea: 158 m²<br>
@@ -190,7 +201,7 @@
                 <h2 class="timeline-title">Härlöv 2</h2>
                 <p class="timeline-subtitle">Härlöv - ? 2017</p>
                 <p class="timeline-description">
-                    <!-- Exact address: Härlöv 2, Härlöv -->
+                    <!-- Exact address: Härlöv 2, Härlöv (56.9647916, 14.6393731) -->
                     Bostadstyp: Ej tillgängligt<br>
                     Områdets byggperiod: 1930- och 1940-tal<br>
                     Boarea: Ej tillgängligt<br>
@@ -212,7 +223,7 @@
                 <h2 class="timeline-title">Östra Järnvägsgatan 15</h2>
                 <p class="timeline-subtitle">Torpsbruk - ? 2016</p>
                 <p class="timeline-description">
-                    <!-- Exact address: Östra Järnvägsgatan 15, Torpsbruk -->
+                    <!-- Exact address: Östra Järnvägsgatan 15, Torpsbruk (57.0342151, 14.5767141) -->
                     Bostadstyp: Villa (byggd 1933)<br>
                     Områdets byggperiod: 1930- och 1950-tal<br>
                     Boarea: 105 m²<br>
@@ -234,7 +245,7 @@
                 <h2 class="timeline-title">Kungsvägen 61</h2>
                 <p class="timeline-subtitle">Växjö - ? 2015</p>
                 <p class="timeline-description">
-                    <!-- Exact address: Kungsvägen 61, Växjö -->
+                    <!-- Exact address: Kungsvägen 61, Växjö (56.8886597, 14.8051711) -->
                     Bostadstyp: Flerbostadshus<br>
                     Områdets byggperiod: 1960- och 1990-tal<br>
                     Boarea: Ej tillgängligt<br>
@@ -256,7 +267,7 @@
                 <h2 class="timeline-title">Östra Järnvägsgatan 15</h2>
                 <p class="timeline-subtitle">Torpsbruk - ? 2014</p>
                 <p class="timeline-description">
-                    <!-- Exact address: Östra Järnvägsgatan 15, Torpsbruk -->
+                    <!-- Exact address: Östra Järnvägsgatan 15, Torpsbruk (57.0342151, 14.5767141) -->
                     Bostadstyp: Villa (byggd 1933)<br>
                     Områdets byggperiod: 1930- och 1950-tal<br>
                     Boarea: 105 m²<br>
@@ -278,7 +289,7 @@
                 <h2 class="timeline-title">Bergsgatan</h2>
                 <p class="timeline-subtitle">Moheda - ? 2013</p>
                 <p class="timeline-description">
-                    <!-- Exact address: Bergsgatan 7, Moheda -->
+                    <!-- Exact address: Bergsgatan 7, Moheda (57.0050563, 14.5803166) -->
                     Bostadstyp: Villa (byggd 1957)<br>
                     Områdets byggperiod: 1960- och 1970-tal<br>
                     Boarea: 105 m²<br>
@@ -289,5 +300,71 @@
             </div>
         </div>
     </div>
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
+    <script>
+        const moveEvents = [
+            { name: "Wieselgrensgatan", subtitle: "Vaxjo - Oktober 2025", lat: 56.880207, lon: 14.7913378 },
+            { name: "Langa gatan", subtitle: "Vaxjo - September 2025", lat: 56.8648229, lon: 14.7973714 },
+            { name: "Falkgatan", subtitle: "Vaxjo - Oktober 2024", lat: 56.8837641, lon: 14.7946495 },
+            { name: "Ostra jarnvagsgatan 13", subtitle: "Moheda - November 2022", lat: 57.005817, lon: 14.5773502 },
+            { name: "Or 1", subtitle: "Or - December 2021", lat: 56.989973, lon: 14.6615856 },
+            { name: "Ostra jarnvagsgatan 17", subtitle: "Moheda - September 2020", lat: 57.0068318, lon: 14.5772772 },
+            { name: "Humlevagen", subtitle: "Torpsbruk - Oktober 2018", lat: 57.0285612, lon: 14.569238 },
+            { name: "Harlov 2", subtitle: "Harlov - 2017", lat: 56.9647916, lon: 14.6393731 },
+            { name: "Ostra Jarnvagsgatan 15", subtitle: "Torpsbruk - 2016", lat: 57.0342151, lon: 14.5767141 },
+            { name: "Kungsvagen 61", subtitle: "Vaxjo - 2015", lat: 56.8886597, lon: 14.8051711 },
+            { name: "Ostra Jarnvagsgatan 15", subtitle: "Torpsbruk - 2014", lat: 57.0342151, lon: 14.5767141 },
+            { name: "Bergsgatan", subtitle: "Moheda - 2013", lat: 57.0050563, lon: 14.5803166 }
+        ];
+
+        const map = L.map("moves-map", {
+            scrollWheelZoom: false
+        });
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution: "&copy; OpenStreetMap contributors"
+        }).addTo(map);
+
+        const lineCoordinates = moveEvents.map((event) => [event.lat, event.lon]);
+
+        const startColor = [46, 204, 113];
+        const endColor = [52, 152, 219];
+        const segmentCount = lineCoordinates.length - 1;
+
+        const interpolateColor = (start, end, progress) => {
+            const r = Math.round(start[0] + (end[0] - start[0]) * progress);
+            const g = Math.round(start[1] + (end[1] - start[1]) * progress);
+            const b = Math.round(start[2] + (end[2] - start[2]) * progress);
+
+            return "rgb(" + r + ", " + g + ", " + b + ")";
+        };
+
+        lineCoordinates.slice(0, -1).forEach((startPoint, index) => {
+            const endPoint = lineCoordinates[index + 1];
+            const progress = segmentCount > 1 ? index / (segmentCount - 1) : 0;
+
+            L.polyline([startPoint, endPoint], {
+                color: interpolateColor(startColor, endColor, progress),
+                weight: 5,
+                opacity: 0.9
+            }).addTo(map);
+        });
+
+        moveEvents.forEach((event, index) => {
+            L.marker([event.lat, event.lon])
+                .addTo(map)
+                .bindPopup("<strong>" + (index + 1) + ". " + event.name + "</strong><br>" + event.subtitle);
+        });
+
+        map.fitBounds(lineCoordinates, {
+            padding: [40, 40]
+        });
+    </script>
 </body>
 </html>
