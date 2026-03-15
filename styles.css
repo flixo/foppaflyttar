@@ -164,13 +164,12 @@ body {
 
 .timeline-date {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 40px;
     background: white;
     z-index: 10;
     padding: 10px 20px;
     border-radius: 15px;
-    font-weight: 700;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
