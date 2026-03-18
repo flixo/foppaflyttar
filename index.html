@@ -19,9 +19,24 @@
     </header>
 
     <section class="map-section" aria-label="Karta över flyttar">
-        <h1 class="map-title">Karta över flyttar</h1>
+        <h1 class="map-title">Alla flyttar</h1>
+        <div class="map-play-controls">
+            <button id="map-play-button" class="map-play-button" type="button" aria-label="Spela upp flyttrutt">
+                ▶ Spela rutt
+            </button>
+        </div>
         <div id="moves-map" class="moves-map"></div>
+        <div class="map-play-destination-row">
+            <span id="map-play-destination" class="map-play-destination">
+                <span class="map-play-year-badge">----</span>
+                <span class="map-play-destination-address">-</span>
+            </span>
+        </div>
     </section>
+
+    <button id="back-to-top-button" class="back-to-top-button" type="button" aria-label="Till toppen">
+        ↑ Till Toppen
+    </button>
 
     <div id="timeline-container" class="timeline-container"></div>
 
@@ -32,6 +47,30 @@
     ></script>
     <script>
         const timelineContainer = document.getElementById("timeline-container");
+        const mapPlayButton = document.getElementById("map-play-button");
+        const mapPlayDestination = document.getElementById("map-play-destination");
+        const movesMapElement = document.getElementById("moves-map");
+        const backToTopButton = document.getElementById("back-to-top-button");
+
+        const scrollToMapViewportPosition = () => {
+            if (movesMapElement) {
+                const mapRect = movesMapElement.getBoundingClientRect();
+                const mapBottomAbsolute = window.scrollY + mapRect.bottom;
+                const bottomMargin = 72;
+                const targetScrollY = Math.max(0, mapBottomAbsolute - window.innerHeight + bottomMargin);
+
+                window.scrollTo({
+                    top: targetScrollY,
+                    behavior: "smooth"
+                });
+                return;
+            }
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        };
 
         const createTimelineItem = (move, options = {}) => {
             const side = move.side || "left";
@@ -168,6 +207,7 @@
 
         const renderMainMap = () => {
             const moveEvents = appData.data.previousMoves;
+            const playbackEvents = moveEvents.slice().reverse();
 
             const map = L.map("moves-map", {
                 scrollWheelZoom: false
@@ -179,7 +219,35 @@
             }).addTo(map);
 
             const lineCoordinates = moveEvents.map((event) => [event.lat, event.lon]);
+            const playbackCoordinates = playbackEvents.map((event) => [event.lat, event.lon]);
             const segmentCount = lineCoordinates.length - 1;
+            const playbackZoom = 13;
+            const segmentDurationMs = 1400;
+            const stopPauseMs = 1000;
+            const truckIcon = L.divIcon({
+                className: "map-play-truck-marker",
+                html: "🚚",
+                iconSize: [52, 52],
+                iconAnchor: [26, 26]
+            });
+            let isPlaying = false;
+            let animationFrameId = null;
+            let travelMarker = null;
+
+            const setPlaybackDestination = (event) => {
+                if (mapPlayDestination) {
+                    if (!event) {
+                        mapPlayDestination.innerHTML =
+                            "<span class=\"map-play-year-badge\">----</span>" +
+                            "<span class=\"map-play-destination-address\">-</span>";
+                        return;
+                    }
+
+                    mapPlayDestination.innerHTML =
+                        "<span class=\"map-play-year-badge\">" + event.year + "</span>" +
+                        "<span class=\"map-play-destination-address\">" + event.title + "</span>";
+                }
+            };
 
             lineCoordinates.slice(0, -1).forEach((startPoint, index) => {
                 const endPoint = lineCoordinates[index + 1];
@@ -211,6 +279,113 @@
             map.fitBounds(lineCoordinates, {
                 padding: [40, 40]
             });
+
+            const interpolatePoint = (startPoint, endPoint, progress) => {
+                return [
+                    startPoint[0] + (endPoint[0] - startPoint[0]) * progress,
+                    startPoint[1] + (endPoint[1] - startPoint[1]) * progress
+                ];
+            };
+
+            const easeInOutCubic = (t) => {
+                if (t < 0.5) {
+                    return 4 * t * t * t;
+                }
+
+                return 1 - Math.pow(-2 * t + 2, 3) / 2;
+            };
+
+            const playRoute = () => {
+                if (!mapPlayButton || isPlaying || playbackCoordinates.length < 2) {
+                    return;
+                }
+
+                scrollToMapViewportPosition();
+
+                isPlaying = true;
+                mapPlayButton.disabled = true;
+                mapPlayButton.textContent = "Spelar…";
+                setPlaybackDestination(playbackEvents[1]);
+
+                if (!travelMarker) {
+                    travelMarker = L.marker(playbackCoordinates[0], {
+                        icon: truckIcon,
+                        zIndexOffset: 1000
+                    }).addTo(map);
+                } else {
+                    travelMarker.setLatLng(playbackCoordinates[0]);
+                }
+
+                let segmentIndex = 0;
+                let segmentStartTs = null;
+                let pauseUntilTs = null;
+                let pendingDestinationEvent = null;
+
+                map.setView(playbackCoordinates[0], playbackZoom, {
+                    animate: true,
+                    duration: 0.8
+                });
+
+                const animateStep = (timestamp) => {
+                    if (pauseUntilTs !== null) {
+                        if (timestamp < pauseUntilTs) {
+                            animationFrameId = window.requestAnimationFrame(animateStep);
+                            return;
+                        }
+
+                        pauseUntilTs = null;
+                        segmentStartTs = timestamp;
+
+                        if (pendingDestinationEvent) {
+                            setPlaybackDestination(pendingDestinationEvent);
+                            pendingDestinationEvent = null;
+                        }
+                    }
+
+                    if (segmentStartTs === null) {
+                        segmentStartTs = timestamp;
+                    }
+
+                    const startPoint = playbackCoordinates[segmentIndex];
+                    const endPoint = playbackCoordinates[segmentIndex + 1];
+                    const elapsed = timestamp - segmentStartTs;
+                    const progress = Math.max(0, Math.min(elapsed / segmentDurationMs, 1));
+                    const easedProgress = easeInOutCubic(progress);
+                    const point = interpolatePoint(startPoint, endPoint, easedProgress);
+
+                    travelMarker.setLatLng(point);
+                    map.panTo(point, { animate: false });
+
+                    if (progress >= 1) {
+                        segmentIndex += 1;
+                        segmentStartTs = timestamp;
+
+                        if (segmentIndex >= playbackCoordinates.length - 1) {
+                            isPlaying = false;
+                            mapPlayButton.disabled = false;
+                            mapPlayButton.textContent = "▶ Spela rutt";
+                            setPlaybackDestination(playbackEvents[playbackEvents.length - 1]);
+                            animationFrameId = null;
+                            return;
+                        }
+
+                        pendingDestinationEvent = playbackEvents[segmentIndex + 1];
+                        pauseUntilTs = timestamp + stopPauseMs;
+                        segmentStartTs = null;
+                    }
+
+                    animationFrameId = window.requestAnimationFrame(animateStep);
+                };
+
+                if (animationFrameId) {
+                    window.cancelAnimationFrame(animationFrameId);
+                }
+                animationFrameId = window.requestAnimationFrame(animateStep);
+            };
+
+            if (mapPlayButton) {
+                mapPlayButton.addEventListener("click", playRoute);
+            }
         };
 
         const renderPredictedMap = () => {
@@ -254,6 +429,23 @@
 
         window.addEventListener("resize", applyTimelineMarkerColors);
         window.addEventListener("load", applyTimelineMarkerColors);
+
+        const updateBackToTopVisibility = () => {
+            if (!backToTopButton) {
+                return;
+            }
+
+            backToTopButton.classList.toggle("visible", window.scrollY > 300);
+        };
+
+        if (backToTopButton) {
+            backToTopButton.addEventListener("click", () => {
+                scrollToMapViewportPosition();
+            });
+        }
+
+        window.addEventListener("scroll", updateBackToTopVisibility);
+        updateBackToTopVisibility();
     </script>
 
 </body>
