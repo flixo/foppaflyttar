@@ -28,6 +28,8 @@ body {
 .map-section {
     max-width: 1200px;
     margin: 0 auto 48px;
+    position: relative;
+    z-index: 5;
 }
 
 .map-title {
@@ -90,6 +92,8 @@ body {
 
 .map-play-destination-row {
     margin-top: 10px;
+    position: relative;
+    z-index: 6;
 }
 
 .map-play-year-badge {
@@ -168,15 +172,18 @@ body {
     margin: 0 auto;
     position: relative;
     padding: 40px 0;
+    z-index: 1;
 }
 
 /* Central timeline line */
 .timeline-line {
     position: absolute;
+    top: -88px;
     left: 50%;
     transform: translateX(-50%);
     width: 4px;
-    height: 100%;
+    height: calc(100% + 88px);
+    z-index: 0;
     background: linear-gradient(
         180deg,
         #ffe066 0%,
@@ -336,7 +343,7 @@ body {
     }
 
     .timeline-line {
-        left: 30px;
+        left: 24px;
     }
 
     .timeline-item {
@@ -346,14 +353,14 @@ body {
     .timeline-content-wrapper {
         width: 100%;
         margin: 0;
-        padding-left: 80px;
+        padding-left: 68px;
         padding-right: 0;
     }
 
     .timeline-item.left .timeline-content-wrapper,
     .timeline-item.right .timeline-content-wrapper {
         margin: 0;
-        padding-left: 80px;
+        padding-left: 68px;
         padding-right: 0;
     }
 
@@ -365,13 +372,13 @@ body {
 
     .timeline-item.left .timeline-marker,
     .timeline-item.right .timeline-marker {
-        left: -50px;
+        left: -54px;
         right: auto;
     }
 
     .timeline-date-wrapper {
         justify-content: flex-start;
-        padding-left: 80px;
+        padding-left: 68px;
     }
 
     .timeline-date {
@@ -424,26 +431,26 @@ body {
 
     .timeline-content-wrapper {
         width: 100%;
-        padding-left: 60px;
+        padding-left: 50px;
     }
 
     .timeline-item.left .timeline-content-wrapper,
     .timeline-item.right .timeline-content-wrapper {
-        padding-left: 60px;
+        padding-left: 50px;
         padding-right: 0;
     }
 
     .timeline-line {
-        left: 20px;
+        left: 14px;
     }
 
     .timeline-item.left .timeline-marker,
     .timeline-item.right .timeline-marker {
-        left: -50px;
+        left: -46px;
     }
 
     .timeline-date-wrapper {
-        padding-left: 60px;
+        padding-left: 50px;
     }
 
     .timeline-date {

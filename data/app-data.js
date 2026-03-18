@@ -19,7 +19,7 @@ const appData = {
             predicted_latitude: 56.867993254013086,
             predicted_longitude: 14.823492950859844,
             prediction_method: "average_move_gap_and_coordinate_regression",
-            side: "left"
+            side: "right"
         },
         previousMoves: [
             {
