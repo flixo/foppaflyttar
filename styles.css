@@ -203,6 +203,33 @@ body {
     width: 100%;
 }
 
+.timeline-item-pair {
+    display: flex;
+    align-items: flex-start;
+}
+
+.timeline-item-pair .timeline-content-wrapper {
+    width: 50%;
+}
+
+.timeline-item-pair .timeline-content-wrapper.pair-left {
+    padding-right: 40px;
+}
+
+.timeline-item-pair .timeline-content-wrapper.pair-right {
+    padding-left: 40px;
+}
+
+.timeline-item-pair .pair-left .timeline-marker {
+    right: -50px;
+    left: auto;
+}
+
+.timeline-item-pair .pair-right .timeline-marker {
+    left: -50px;
+    right: auto;
+}
+
 /* Timeline content box */
 .timeline-content-wrapper {
     position: relative;
@@ -307,6 +334,40 @@ body {
     line-height: 1.7;
 }
 
+.timeline-frequency-summary {
+    margin-bottom: 14px;
+}
+
+.frequency-chart {
+    background: #f8f3ea;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.frequency-bars {
+    height: 120px;
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.frequency-bar {
+    flex: 1 1 0;
+    min-height: 6px;
+    border-radius: 4px 4px 2px 2px;
+    background: linear-gradient(180deg, #ff8c00 0%, #5b1a9b 100%);
+    opacity: 0.9;
+}
+
+.frequency-scale {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #6d7e8e;
+    font-weight: 600;
+}
+
 /* Images */
 .timeline-image {
     width: 100%;
@@ -368,6 +429,28 @@ body {
         width: 100%;
         margin: 0;
         padding: 24px;
+    }
+
+    .timeline-item-pair {
+        display: block;
+    }
+
+    .timeline-item-pair .timeline-content-wrapper,
+    .timeline-item-pair .timeline-content-wrapper.pair-left,
+    .timeline-item-pair .timeline-content-wrapper.pair-right {
+        width: 100%;
+        padding-left: 68px;
+        padding-right: 0;
+    }
+
+    .timeline-item-pair .timeline-content-wrapper.pair-right {
+        margin-top: 24px;
+    }
+
+    .timeline-item-pair .pair-left .timeline-marker,
+    .timeline-item-pair .pair-right .timeline-marker {
+        left: -54px;
+        right: auto;
     }
 
     .timeline-item.left .timeline-marker,
@@ -446,6 +529,17 @@ body {
 
     .timeline-item.left .timeline-marker,
     .timeline-item.right .timeline-marker {
+        left: -46px;
+    }
+
+    .timeline-item-pair .timeline-content-wrapper,
+    .timeline-item-pair .timeline-content-wrapper.pair-left,
+    .timeline-item-pair .timeline-content-wrapper.pair-right {
+        padding-left: 50px;
+    }
+
+    .timeline-item-pair .pair-left .timeline-marker,
+    .timeline-item-pair .pair-right .timeline-marker {
         left: -46px;
     }
 
