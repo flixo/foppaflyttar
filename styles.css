@@ -12,6 +12,19 @@ body {
     padding: 60px 20px;
 }
 
+.site-brand {
+    max-width: 1200px;
+    margin: 0 auto 28px;
+    display: flex;
+    justify-content: center;
+}
+
+.site-logo {
+    width: min(100%, 760px);
+    height: auto;
+    display: block;
+}
+
 .map-section {
     max-width: 1200px;
     margin: 0 auto 48px;
@@ -46,6 +59,10 @@ body {
     .predicted-move-map {
         height: 180px;
         min-height: 180px;
+    }
+
+    .site-brand {
+        margin-bottom: 20px;
     }
 }
 
