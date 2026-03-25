@@ -13,10 +13,31 @@ body {
 }
 
 .site-brand {
+    position: relative;
     max-width: 1200px;
     margin: 0 auto 28px;
     display: flex;
     justify-content: center;
+}
+
+.geoguessr-badge-link {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    display: inline-block;
+    z-index: 10;
+    transition: transform 0.2s ease;
+    transform: rotate(15deg);
+}
+
+.geoguessr-badge-link:hover {
+    transform: translateY(-1px);
+}
+
+.geoguessr-badge {
+    width: 200px;
+    height: auto;
+    display: block;
 }
 
 .site-logo {
@@ -395,6 +416,14 @@ body {
 
 /* Responsive design */
 @media (max-width: 768px) {
+    .geoguessr-badge-link {
+        top: -50px;
+    }
+
+    .geoguessr-badge {
+        width: 160px;
+    }
+
     .map-title {
         font-size: 28px;
     }
@@ -482,6 +511,15 @@ body {
 }
 
 @media (max-width: 480px) {
+    .geoguessr-badge-link {
+        top: -50px;
+        right: 4px;
+    }
+
+    .geoguessr-badge {
+        width: 102px;
+    }
+
     body {
         padding: 30px 10px;
     }
