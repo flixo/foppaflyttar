@@ -2,15 +2,15 @@
 
 Saknade på timeline
 
-Växjö  Söder 
-Moheda Väcxjövägen 11
+Växjö  Söder Lövsalsgatan
+
+Moheda 'Växjövägen 11'
+
 Moheda Bergsgatan 7
+
 Kalmar Norrliden
+
 Moheda Enevägen 21 - 1996-200V
-Torpsbruk ?? - 19??-19??
 
-
-
-
-
+Torpsbruk Fridhemsv 5 - 19??-19??
 
