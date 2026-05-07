@@ -280,11 +280,19 @@
             timelineContainer.appendChild(createTimelineItem(predictedMove, { includePredictedMap: true }));
             timelineContainer.appendChild(createDateWrapper("Idag"));
             const frequencyCard = buildMovingFrequencyCard();
-            timelineContainer.appendChild(
-                createTimelinePair(appData.data.pendingMove, frequencyCard.move, {
-                    customBodyHtml: frequencyCard.bodyHtml
-                })
-            );
+            if (appData.data.pendingMove) {
+                timelineContainer.appendChild(
+                    createTimelinePair(appData.data.pendingMove, frequencyCard.move, {
+                        customBodyHtml: frequencyCard.bodyHtml
+                    })
+                );
+            } else {
+                timelineContainer.appendChild(
+                    createTimelineItem(frequencyCard.move, {
+                        customBodyHtml: frequencyCard.bodyHtml
+                    })
+                );
+            }
 
             let currentYear = null;
             appData.data.previousMoves.forEach((move, index) => {
@@ -299,7 +307,14 @@
         };
 
         const renderMainMap = () => {
-            const moveEvents = appData.data.previousMoves;
+            const moveEvents = appData.data.previousMoves
+                .map((event, index) => ({ ...event, timelineIndex: index }))
+                .filter((event) => Number.isFinite(event.lat) && Number.isFinite(event.lon));
+
+            if (!moveEvents.length) {
+                return;
+            }
+
             const playbackEvents = moveEvents.slice().reverse();
 
             const map = L.map("moves-map", {
@@ -359,7 +374,7 @@
                     .bindPopup("<strong>" + (index + 1) + ". " + event.title + "</strong><br>" + event.subtitle);
 
                 marker.on("click", () => {
-                    const target = document.getElementById("timeline-move-" + index);
+                    const target = document.getElementById("timeline-move-" + event.timelineIndex);
                     if (target) {
                         target.scrollIntoView({
                             behavior: "smooth",
@@ -369,9 +384,13 @@
                 });
             });
 
-            map.fitBounds(lineCoordinates, {
-                padding: [40, 40]
-            });
+            if (lineCoordinates.length === 1) {
+                map.setView(lineCoordinates[0], 13);
+            } else {
+                map.fitBounds(lineCoordinates, {
+                    padding: [40, 40]
+                });
+            }
 
             const interpolatePoint = (startPoint, endPoint, progress) => {
                 return [

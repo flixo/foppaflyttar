@@ -1,17 +1,5 @@
 const appData = {
     data: {
-        pendingMove: {
-            title: "Planerad flytt",
-            subtitle: "",
-            descriptionLines: [
-                "Planerad adress: Östra järnvägsgatan 13, Moheda",
-                "Status: Tillbaka till tidigare adress"
-            ],
-            image: "images/moves/ostra-jarnvagsgatan-13.jpg",
-            alt: "Planerad flytt till Östra järnvägsgatan 13, Moheda",
-            side: "left",
-            timeLabel: "Pending"
-        },
         predictedMove: {
             title: "Framtida förutspådd flytt",
             predicted_move_date: "2026-12",
@@ -22,6 +10,26 @@ const appData = {
             side: "right"
         },
         previousMoves: [
+            {
+                title: "Östra järnvägsgatan 13",
+                subtitle: "Moheda - April 2026",
+                location: "Moheda",
+                month: "April",
+                year: 2026,
+                addressQuery: "Ostra jarnvagsgatan 13 Moheda",
+                lat: 57.005817,
+                lon: 14.5773502,
+                details: [
+                    "Bostadstyp: Villa (byggd 1910)",
+                    "Områdets byggperiod: 1960- och 1970-tal",
+                    "Boarea: 83 m²",
+                    "Uppskattat värde: Ej tillgängligt"
+                ],
+                image: "images/moves/ostra-jarnvagsgatan-13.jpg",
+                alt: "Hus på Östra järnvägsgatan 13, Moheda",
+                currentLocation: true,
+                side: "left"
+            },
             {
                 title: "Wieselgrensgatan",
                 subtitle: "Växjö - Oktober 2025",
@@ -39,7 +47,6 @@ const appData = {
                 ],
                 image: "images/moves/wieselgrensgatan.jpg",
                 alt: "Hus på Wieselgrensgatan, Växjö",
-                currentLocation: true,
                 side: "right"
             },
             {
@@ -250,6 +257,108 @@ const appData = {
                 image: "images/moves/bergsgatan.jpg",
                 alt: "Hus på Bergsgatan, Moheda",
                 side: "left"
+            },
+            {
+                title: "Lövsalsgatan",
+                subtitle: "Växjö Söder - ?",
+                location: "Växjö",
+                month: "?",
+                year: "?",
+                addressQuery: "Lovsalsgatan Soder Vaxjo",
+                lat: 56.8665858,
+                lon: 14.7983235,
+                details: [
+                    "Geokodning: Gatunivå (Lövsalsgatan)",
+                    "Område: Biskopshagen, Söder",
+                    "Kommun: Växjö kommun",
+                    "Postnummer: 352 35"
+                ],
+                side: "right"
+            },
+            {
+                title: "Växjövägen 11",
+                subtitle: "Moheda - ?",
+                location: "Moheda",
+                month: "?",
+                year: "?",
+                addressQuery: "Vaxjovagen 11 Moheda",
+                lat: 56.9962309,
+                lon: 14.5789006,
+                details: [
+                    "Geokodning: Gatunivå (Växjövägen)",
+                    "Område: Ryd, Moheda",
+                    "Kommun: Alvesta kommun",
+                    "Postnummer: 342 62"
+                ],
+                side: "left"
+            },
+            {
+                title: "Bergsgatan 7",
+                subtitle: "Moheda - ?",
+                location: "Moheda",
+                month: "?",
+                year: "?",
+                addressQuery: "Bergsgatan 7 Moheda",
+                lat: 57.005165,
+                lon: 14.580551,
+                details: [
+                    "Bostadstyp: Villa (byggd 1957)",
+                    "Områdets byggperiod: 1960- och 1970-tal",
+                    "Boarea: 105 m²",
+                    "Uppskattat värde: 1,300,000 - 2,200,000 SEK"
+                ],
+                side: "right"
+            },
+            {
+                title: "Norrliden",
+                subtitle: "Kalmar - ?",
+                location: "Kalmar",
+                month: "?",
+                year: "?",
+                addressQuery: "Norrliden Kalmar",
+                lat: 56.7019136,
+                lon: 16.3510512,
+                details: [
+                    "Geokodning: Områdesnivå (Norrliden)",
+                    "Kommun: Kalmar kommun",
+                    "Län: Kalmar län",
+                    "Postnummer: Ej tillgängligt"
+                ],
+                side: "left"
+            },
+            {
+                title: "Enevägen 21",
+                subtitle: "Moheda - ?",
+                location: "Moheda",
+                month: "?",
+                year: "?",
+                addressQuery: "Enevagen 21 Moheda",
+                lat: 56.9960548,
+                lon: 14.5814452,
+                details: [
+                    "Geokodning: Gatunivå (Enevägen)",
+                    "Ort: Moheda",
+                    "Kommun: Alvesta kommun",
+                    "Postnummer: 342 62"
+                ],
+                side: "right"
+            },
+            {
+                title: "Fridhemsv 5",
+                subtitle: "Torpsbruk - ?",
+                location: "Torpsbruk",
+                month: "?",
+                year: "?",
+                addressQuery: "Fridhemsv 5 Torpsbruk",
+                lat: 57.0339709,
+                lon: 14.5696723,
+                details: [
+                    "Geokodning: Gatunivå (Fridhemsvägen)",
+                    "Område: Björkeryd, Torpsbruk",
+                    "Kommun: Alvesta kommun",
+                    "Postnummer: 342 62"
+                ],
+                side: "left"
             }
         ]
     },
@@ -278,7 +387,12 @@ const appData = {
             { "address_query": "Harlov 2 Harlov", "display_address": "Harlov 2", "lat": 56.95712, "lon": 14.636159, "osm_type": "way", "osm_id": 169426306, "category": "highway", "type": "tertiary", "road": "G 736", "house_number": null, "suburb": null, "city": null, "municipality": "Alvesta kommun", "county": "Kronobergs län", "postcode": "342 92", "country": "Sverige", "display_name": "G 736, Nederåsen, Alvesta kommun, Kronobergs län, 342 92, Sverige" },
             { "address_query": "Ostra Jarnvagsgatan 15 Torpsbruk", "display_address": "Ostra Jarnvagsgatan 15, Torpsbruk", "lat": 57.034237, "lon": 14.576926, "osm_type": "way", "osm_id": 120137125, "category": "highway", "type": "residential", "road": "Östra Järnvägsgatan", "house_number": null, "suburb": "Notteryd", "city": "Torpsbruk", "municipality": "Alvesta kommun", "county": "Kronobergs län", "postcode": "342 62", "country": "Sverige", "display_name": "Östra Järnvägsgatan, Notteryd, Torpsbruk, Alvesta kommun, Kronobergs län, 342 62, Sverige" },
             { "address_query": "Kungsvagen 61 Vaxjo", "display_address": "Kungsvagen 61A, Vaxjo", "lat": 56.888546, "lon": 14.805063, "osm_type": "way", "osm_id": 151731923, "category": "highway", "type": "residential", "road": "Kungsvägen", "house_number": null, "suburb": "Hov", "city": "Växjö", "municipality": "Växjö kommun", "county": "Kronobergs län", "postcode": "352 38", "country": "Sverige", "display_name": "Kungsvägen, Hovskulle, Hov, Växjö, Växjö kommun, Kronobergs län, 352 38, Sverige" },
-            { "address_query": "Bergsgatan 7 Moheda", "display_address": "Bergsgatan 7, Moheda", "lat": 57.005165, "lon": 14.580551, "osm_type": "way", "osm_id": 120136044, "category": "highway", "type": "residential", "road": "Skogsgatan", "house_number": null, "suburb": null, "city": "Moheda", "municipality": "Alvesta kommun", "county": "Kronobergs län", "postcode": "342 62", "country": "Sverige", "display_name": "Skogsgatan, Moheda, Alvesta kommun, Kronobergs län, 342 62, Sverige" }
+            { "address_query": "Bergsgatan 7 Moheda", "display_address": "Bergsgatan 7, Moheda", "lat": 57.005165, "lon": 14.580551, "osm_type": "way", "osm_id": 120136044, "category": "highway", "type": "residential", "road": "Skogsgatan", "house_number": null, "suburb": null, "city": "Moheda", "municipality": "Alvesta kommun", "county": "Kronobergs län", "postcode": "342 62", "country": "Sverige", "display_name": "Skogsgatan, Moheda, Alvesta kommun, Kronobergs län, 342 62, Sverige" },
+            { "address_query": "Lovsalsgatan Soder Vaxjo", "display_address": "Lovsalsgatan, Soder, Vaxjo", "lat": 56.8665858, "lon": 14.7983235, "osm_type": "way", "osm_id": 30501756, "category": "highway", "type": "residential", "road": "Lövsalsgatan", "house_number": null, "suburb": "Söder", "city": "Växjö", "municipality": "Växjö kommun", "county": "Kronobergs län", "postcode": "352 35", "country": "Sverige", "display_name": "Lövsalsgatan, Biskopshagen, Söder, Växjö, Växjö kommun, Kronobergs län, 352 35, Sverige" },
+            { "address_query": "Vaxjovagen 11 Moheda", "display_address": "Vaxjovagen 11, Moheda", "lat": 56.9962309, "lon": 14.5789006, "osm_type": "way", "osm_id": 169426317, "category": "highway", "type": "tertiary", "road": "Växjövägen", "house_number": null, "suburb": null, "city": "Moheda", "municipality": "Alvesta kommun", "county": "Kronobergs län", "postcode": "342 62", "country": "Sverige", "display_name": "Växjövägen, Ryd, Moheda, Alvesta kommun, Kronobergs län, 342 62, Sverige" },
+            { "address_query": "Norrliden Kalmar", "display_address": "Norrliden, Kalmar", "lat": 56.7019136, "lon": 16.3510512, "osm_type": "relation", "osm_id": 6596733, "category": "boundary", "type": "administrative", "road": null, "house_number": null, "suburb": "Norrliden", "city": "Kalmar", "municipality": "Kalmar kommun", "county": "Kalmar län", "postcode": null, "country": "Sverige", "display_name": "Norrliden, Kalmar kommun, Kalmar län, Sverige" },
+            { "address_query": "Enevagen 21 Moheda", "display_address": "Enevagen 21, Moheda", "lat": 56.9960548, "lon": 14.5814452, "osm_type": "way", "osm_id": 157926929, "category": "highway", "type": "residential", "road": "Enevägen", "house_number": null, "suburb": null, "city": "Moheda", "municipality": "Alvesta kommun", "county": "Kronobergs län", "postcode": "342 62", "country": "Sverige", "display_name": "Enevägen, Moheda, Alvesta kommun, Kronobergs län, 342 62, Sverige" },
+            { "address_query": "Fridhemsv 5 Torpsbruk", "display_address": "Fridhemsvagen 5, Torpsbruk", "lat": 57.0339709, "lon": 14.5696723, "osm_type": "way", "osm_id": 1138242418, "category": "highway", "type": "residential", "road": "Fridhemsvägen", "house_number": null, "suburb": null, "city": "Torpsbruk", "municipality": "Alvesta kommun", "county": "Kronobergs län", "postcode": "342 62", "country": "Sverige", "display_name": "Fridhemsvägen, Björkeryd, Torpsbruk, Alvesta kommun, Kronobergs län, 342 62, Sverige" }
         ],
         overpass: [
             { "address_query": "Wieselgrensgatan 20 Vaxjo", "display_address": "Wieselgrensgatan 20, Vaxjo", "query_lat": 56.8805, "query_lon": 14.790417, "nearby_building_count_120m": 8, "nearest_building_distance_m": 3.2, "nearest_osm_element_type": "way", "nearest_osm_element_id": 220560442, "nearest_building_tag": "yes", "nearest_building_levels": null, "nearest_start_date": null, "nearest_building_use": null, "nearest_roof_shape": null, "nearest_addr_street": null, "nearest_addr_housenumber": null },
